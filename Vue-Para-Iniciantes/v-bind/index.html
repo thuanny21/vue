@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!-- Acerte o código abaixo -->
+    <div id="app">
+        <a v-bind:href="link">Link Google</a>
+        <p v-bind:class="cor">Parágrafo</p>
+    </div>
+
+    <div id="app2">
+        <a :href="link">Link Google</a>
+        <p :class="cor">Parágrafo</p>
+    </div>
+
+    <div id="app3">
+        <p :class="comprou ? 'verde' : 'vemelho'">Comprou</p>
+    </div>
+
+    
+    <script>
+
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            link: 'https://www.google.com',
+            cor: 'azul',
+        },
+        
+    });
+
+    const vm2 = new Vue({
+        el: "#app2",
+        data: {
+            link: 'https://www.google.com',
+            cor: 'azul',
+        },
+    })
+
+    const vm3 = new Vue({
+        el: "#app3",
+        data: {
+            comprou: true,
+        },
+    })
+
+    
+  
+  
+    </script>
+  
+  
+
+  
+    
+</body>
+</html>

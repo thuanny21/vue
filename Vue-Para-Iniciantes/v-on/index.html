@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    
+    <style>
+        .verde {
+            color: green;
+        }
+        .vermelho {
+            color: red;
+        }
+    </style>
+    
+    <div id="app">
+        <button v-on:click="handleClick">Clique</a>
+    </div>
+
+    <div id="app2">
+        <button @click="handleClick">Clique</a>
+    </div>
+
+    <div id="app3">
+        <button @click="ativo = !ativo">Ativar</button>
+        <p :class="ativo ? 'verde' : 'vermelho'">Texto de teste.</p>
+    </div>
+
+    <div id="app4">
+        <a @click.prevent="scrollSuave" href="#interno">Prevent</a>
+        <a @click.once="scrollSuave" href="#interno">Once</a>
+        <a @click.prevent.once="scrollSuave" href="#interno">Once</a>
+    </div>
+
+    <div id="app5">
+        <div @mousemove="handleMouse">Mouse X: {{mouse.x}}</div>
+        <input @keyup="handleKey" type="text" />
+    </div>
+
+    
+    <script>
+
+    const vm = new Vue({
+        el: '#app',
+        methods: {
+            handleClick(event) {
+            console.log(event);
+            },
+        },        
+    });
+
+    const vm2 = new Vue({
+        el: '#app2',
+        methods: {
+            handleClick(event) {
+            console.log(event);
+            },
+        },
+    })
+
+    const vm3 = new Vue({
+        el: "#app3",
+        data: {
+            ativo: true,
+        },
+    })
+
+    const vm4 = new Vue({
+        el: "#app4",
+        methods: {
+            scrollSuave() {
+            console.log('Scroll Suave');
+            },
+        },
+    })
+
+    const vm5 = new Vue({
+        el: "#app5",
+        data: {
+            mouse: '',
+        },
+        methods: {
+            handleKey(event) {
+            console.log(event.key);
+            },
+            handleMouse(event) {
+            this.mouse = event;
+            },
+        },
+    })
+    
+  
+  
+    </script>
+  
+  
+
+  
+    
+</body>
+</html>
